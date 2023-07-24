@@ -1,4 +1,71 @@
-* {
-  margin: 0;
-  padding: 0;
+body {
+  display: grid;
+  justify-items: center;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.form__title {
+  font-size: 30px;
+}
+
+.label {
+  display: block;
+  font-size: 14px;
+}
+
+.label-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.form__fields {
+  display: grid;
+  grid-gap: 35px;
+}
+.form__field {
+  width: 300px;
+}
+
+.input {
+  width: 300px;
+  height: 30px;
+  border: 0;
+  border-bottom: 1px solid #000;
+  background-color: rgba(0, 0, 0, 0);
+  outline: 0;
+}
+
+.password-forgott {
+  font-size: 18px;
+  color: rgba(48, 0, 220, 255);
+}
+
+.form__button {
+  width: 300px;
+  background-color: rgba(48, 0, 220, 255);
+}
+
+.button {
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  height: 50px;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+}
+
+.button__arrow {
+  position: relative;
+  bottom: 3px;
+  font-size: 35px;
+}
+
+.button__text {
+  background-color: rgba(48, 0, 220, 255);
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 18px;
 }

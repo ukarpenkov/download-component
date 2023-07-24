@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>login</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <form class="form">
@@ -12,22 +13,30 @@
       <div class="form__image">
         <img src="./assets/images/login-pic.jpg" alt="" />
       </div>
-      <div class="field">
-        <label for="email">Email/Телефон/WhatsApp </label>
-        <input type="text" name="email" placeholder="email" />
-      </div>
-      <div class="field">
-        <div>
-          <label for="password">Пароль</label>
-          <div>Не знаете пароль?</div>
+      <div class="form__fields">
+        <div class="form__field">
+          <div class="label-wrapper">
+            <label for="email" class="label">Email/Телефон/WhatsApp </label>
+          </div>
+          <input type="text" name="email" placeholder="email" class="input" />
         </div>
-
-        <input type="password" name="password" placeholder="password" />
-      </div>
-      <div>
-        <div class="button">
-          <div>Войти</div>
-          <div>Arrow</div>
+        <div class="form__field">
+          <div class="label-wrapper">
+            <label for="password">Пароль</label>
+            <div class="password-forgott">Не знаете пароль?</div>
+          </div>
+          <input
+            type="password"
+            name="password"
+            placeholder="password"
+            class="input"
+          />
+        </div>
+        <div class="form__button">
+          <div class="button">
+            <input type="submit" value="Войти" class="button__text" />
+            <div class="button__arrow">→</div>
+          </div>
         </div>
       </div>
     </form>
