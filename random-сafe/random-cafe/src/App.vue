@@ -1,38 +1,59 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, reactive, ref } from 'vue'
 
-const products = ref([
-  { tite: 'Банан', price: 20 },
-  { tite: 'яб', price: 200 },
-  { tite: 'груша', price: 2 },
-  { tite: 'сникерс', price: 500 },
-])
-
-const query = ref('')
-
-const queryProducts = computed(() => {
-  let p = products.value
-  let search = query.value
-  if (search) {
-    p = p.filter((product) => {
-      return product.tite.indexOf(search) !== -1 || product.price <= search
-    })
-  }
-  return p
+const review = reactive({
+  author: '',
+  stars: null,
+  text: '',
+  photos: [],
+  isRecomended: true,
 })
+
+const stars = [1, 2, 3, 4, 5]
+
+const submit = () => {
+  console.log('sub!')
+}
 </script>
 
 <template>
-  <div>
-    <input type="search" placeholder="поиск продуктов" v-model="query" />
-    <br />
-    <br />
+  <form @submit.prevent.stop="submit" class="container pt-5 pb-5">
+    <input
+      type="text"
+      v-model="review.author"
+      placeholder="Ваше имя"
+      class="form-control mb-3"
+    />
 
-    <ul>
-      <li v-for="product in queryProducts" :key="product">
-        {{ product.tite }}-
-        <sup>{{ product.price.toLocaleString() }}руб</sup>
-      </li>
-    </ul>
-  </div>
+    <textarea
+      rows="3"
+      class="form-control mb-3"
+      v-model="review.text"
+      placeholder="Что понравилось, а что нет"
+    ></textarea>
+
+    <h4>Оценка</h4>
+    <div v-for="star in stars" :key="star" class="form-check">
+      <input class="form-check-input" type="checkbox" :id="`star${star}`" />
+      <label class="form-check-label" :for="`star${star}`">
+        {{ star }}
+      </label>
+    </div>
+
+    <div class="mt-3 mb-5">
+      <label class="form-label">Фото</label>
+      <input class="form-control" type="file" />
+    </div>
+
+    <div class="form-check">
+      <input class="form-check-input" type="radio" id="adv1" />
+      <label class="form-check-label" for="adv1"> Не советую </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" id="adv2" checked />
+      <label class="form-check-label" for="adv2"> Советую </label>
+    </div>
+
+    <button class="btn btn-primary mt-5">Отправить</button>
+  </form>
 </template>
