@@ -1,5 +1,6 @@
 <script setup>
 import { computed, reactive, ref } from 'vue'
+
 import axios from 'axios'
 
 const review = reactive({
@@ -48,6 +49,7 @@ const uploadFile = (e) => {
 
 <template>
   <form @submit.prevent.stop="submit" class="container pt-5 pb-5">
+    <Uinput />
     <input
       type="text"
       v-model="review.author"
