@@ -1,6 +1,7 @@
 <script>
 import { computed, reactive, defineComponent } from 'vue'
 import UButton from './UButton.vue'
+import UFile from './UFile.vue'
 import axios from 'axios'
 
 export default defineComponent({
@@ -8,6 +9,7 @@ export default defineComponent({
 
   components: {
     UButton,
+    UFile,
   },
 
   setup() {
@@ -18,6 +20,7 @@ export default defineComponent({
       photo: null,
       isRecomended: true,
     })
+    const stars = [1, 2, 3, 4, 5]
     const submit = () => {
       console.log('sub!')
 
@@ -40,24 +43,10 @@ export default defineComponent({
     return {
       review,
       submit,
+      stars,
     }
   },
 })
-
-// const previewFilePath = computed(() => {
-//   if (review.photo) {
-//     return URL.createObjectURL(review.photo)
-//   }
-
-//   return '#'
-// })
-
-// const stars = [1, 2, 3, 4, 5]
-
-// const uploadFile = (e) => {
-//   const [file] = e.target.files
-//   review.photo = file
-// }
 </script>
 
 <template>
@@ -85,12 +74,7 @@ export default defineComponent({
       </label>
     </div>
 
-    <div class="mt-3 mb-5">
-      <label class="form-label">Фото</label>
-      <input class="form-control" type="file" @change="uploadFile" />
-
-      <img :src="previewFilePath" alt="" class="w-50 h-50 mt-5" />
-    </div>
+    <UFile v-model="review.photo" label="Фото" />
 
     <div class="form-check">
       <input
@@ -102,6 +86,7 @@ export default defineComponent({
       />
       <label class="form-check-label" for="adv1"> Не советую </label>
     </div>
+
     <div class="form-check">
       <input
         class="form-check-input"
